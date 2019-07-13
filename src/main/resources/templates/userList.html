@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        table{
+            width: 60%;
+            border-top: lightblue solid 2px;
+            border-left: lightblue solid 2px;
+            border-collapse: collapse;
+        }
+        th,td{
+            border-bottom: lightblue solid 2px;
+            border-right: lightblue solid 2px;
+            width: 270px;
+            text-align: center;
+        }
+        #userAdd{
+            width: 80px;
+            height: 30px;
+            opacity: 0.3;
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+<div style="margin-left: 30%">
+    <p style="margin-bottom: 50px;color:red;margin-left: 12%;" th:if="${msg!=null}" th:text="${msg}"></p>
+    <a style="margin-bottom: 5px;" id="userAdd" href="/toUserAdd">新增用户</a>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user,userStat:${userList}">
+                <td th:text="${userStat.index+1}"></td>
+                <td th:text="${user.username}"></td>
+                <td>
+                    <a th:href="@{'/toUserEdit?id='+${user.id}}">修改</a>
+                    <a style="margin-left: 5px;" th:href="@{'/userDelete?id='+${user.id}}">删除</a>
+                    <a style="margin-left: 5px;" th:href="@{'/toUpdateRole?id='+${user.id}}">更新角色</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

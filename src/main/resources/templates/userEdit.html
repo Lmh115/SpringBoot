@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div style="margin-left: 30%">
+    <h2>修改用户信息</h2>
+    <form action="/userEdit">
+        <input type="hidden" name="id" th:value="${user.id}"/>
+        用户名：<input type="text" name="username" th:value="${user.username}"/><br/><br/>
+        密    码：<input type="password" name="password"/><br/><br/>
+        <input type="submit" value="提交"/>
+</form>
+</div>
+</body>
+</html>

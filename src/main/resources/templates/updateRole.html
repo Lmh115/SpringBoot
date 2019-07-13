@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="margin-left: 30%">
+    <form action="/roleUpdate" method="post">
+        <input type="hidden" name="id" th:value="${role.id}"/>
+        用  户  名：<input name="username" type="text" th:value="${role.username}"/><br/><br/>
+        选择角色：<input style="margin-left: 8px;" type="radio" name="roles"
+                    th:each="roleName,roleNameStat:${roleNameList}"
+                    th:value="${roleName}"
+                    th:text="${roleName}"
+                    th:attr="checked=${roleName==role.roles?true:false}"
+                    /><br/><br/>
+        <input type="submit" value="提交"/>
+    </form>
+</div>
+</body>
+</html>
